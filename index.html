@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+    </body>
+    <script src="./script/index.js"></script>
+    <script>
+        function resize() {
+            var canvas = document.getElementById("game");
+            var canvasRatio = canvas.height / canvas.width;
+            var windowRatio = window.innerHeight / window.innerWidth;
+            var width;
+            var height;
+
+            if (windowRatio < canvasRatio) {
+                height = window.innerHeight;
+                width = height / canvasRatio;
+            } else {
+                width = window.innerWidth;
+                height = width * canvasRatio;
+            }
+
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+        }
+
+        window.addEventListener("resize", resize, false);
+    </script>
+</html>
