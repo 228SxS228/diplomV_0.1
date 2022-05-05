@@ -2,13 +2,14 @@ const ctx = document.getElementById("canvas").getContext("2d");
 
 class Data {
     setFetch() {
-        fetch("http://localhost:5050/data.json")
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
+        return fetch("http://localhost:5050/data.json").then((response) => { 
+            return response.json().then((data) => {
                 console.log(data);
-            });
+                return data;
+            }).catch((err) => {
+                console.log(err);
+            }) 
+        });
     }
 
     setData() {
@@ -28,6 +29,14 @@ class Data {
 }
 
 const test3 = new Data().setFetch();
+
+const app = async () => {
+    const obj = await fetch('http://localhost:5050');
+    const result = await obj.json();
+    console.log(result)
+  }
+  
+app()
 
 class UI {
     setRectangle() {
