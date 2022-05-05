@@ -1,5 +1,34 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 
+class Data {
+    setFetch() {
+        fetch("http://localhost:5050/data.json")
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+            });
+    }
+
+    setData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:5050/data.json");
+        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        xhr.send();
+        xhr.addEventListener("load", function () {
+            if (xhr.status == 200) {
+                let data = JSON.parse(xhr.response);
+                console.log(data);
+            } else {
+                console.error("Baaaa");
+            }
+        });
+    }
+}
+
+const test3 = new Data().setFetch();
+
 class UI {
     setRectangle() {
         let rectangle = new Path2D();
@@ -24,32 +53,32 @@ class UI {
 
     setImage() {
         var img = new Image();
-        img.onload = function(){
-          ctx.drawImage(img,40,60);
-    
+        img.onload = function () {
+            ctx.drawImage(img, 40, 60);
         };
-        img.src = '../im-upload-image-1539177877702.jpg';
+        img.src = "../im-upload-image-1539177877702.jpg";
     }
+    //не ручками параметры вводить
 
     setTube() {
         ctx.beginPath();
         ctx.arc(100, 100, 30, 0, Math.PI);
         ctx.stroke();
-    
+
         ctx.beginPath();
         ctx.arc(100, 60, 25, Math.PI * 2, 0);
         ctx.stroke();
-    
+
         ctx.beginPath();
         ctx.moveTo(76, 56);
         ctx.lineTo(70, 100);
         ctx.stroke();
-    
+
         ctx.beginPath();
         ctx.moveTo(124, 55);
         ctx.lineTo(130, 100);
         ctx.stroke();
-    }
+    } //подумать как пересовать тюбу
 
     setLine() {
         ctx.beginPath();
@@ -80,4 +109,4 @@ class UI {
     }
 }
 
-const test = new UI().setImage();
+const test = new UI().setTube();
