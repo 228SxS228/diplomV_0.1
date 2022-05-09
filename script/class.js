@@ -1,48 +1,14 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 
-class Data {
-    setFetch() {
-        return fetch("http://localhost:5050/data.json").then((response) => { 
-            return response.json().then((data) => {
-                console.log(data);
-                return data;
-            }).catch((err) => {
-                console.log(err);
-            }) 
-        });
-    }
-
-    setData() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:5050/data.json");
-        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-        xhr.send();
-        xhr.addEventListener("load", function () {
-            if (xhr.status == 200) {
-                let data = JSON.parse(xhr.response);
-                console.log(data);
-            } else {
-                console.error("Baaaa");
-            }
-        });
-    }
-}
-
-const test3 = new Data().setFetch();
-
-const app = async () => {
-    const obj = await fetch('http://localhost:5050');
-    const result = await obj.json();
-    console.log(result)
-  }
-  
-app()
-
 class UI {
+    // экземпляр класса сет фетч в конструктор
+    // система классов
+    // глобальная функция и в ней вызвать класс уи
+
     setRectangle() {
-        let rectangle = new Path2D();
+        const rectangle = new Path2D();
         ctx.beginPath();
-        rectangle.rect(195, 50, 100, 100);
+        rectangle.rect();
         ctx.closePath();
         ctx.stroke(rectangle);
     }
@@ -118,4 +84,40 @@ class UI {
     }
 }
 
-const test = new UI().setTube();
+class Data {
+    constructor() {
+        this.ui = new UI();
+    }
+
+    setFetch() {
+        return fetch("http://localhost:5050/data.json").then((response) => {
+            return response
+                .json()
+                .then((data) => {
+                    console.log(data);
+                    this.ui.setRectangle();
+                    return data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    }
+
+    setData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:5050/data.json");
+        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        xhr.send();
+        xhr.addEventListener("load", function () {
+            if (xhr.status == 200) {
+                let data = JSON.parse(xhr.response);
+                console.log(data);
+            } else {
+                console.error("Baaaa");
+            }
+        });
+    }
+}
+
+const test = new Data().setFetch();

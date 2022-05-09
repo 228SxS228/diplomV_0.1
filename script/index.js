@@ -29,12 +29,12 @@ text();
 
 function image() {
     var img = new Image();
-    img.onload = function(){
-      ctx.drawImage(img,40,60);
-
+    img.onload = function () {
+        ctx.drawImage(img, 40, 60);
     };
-    img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png';
+    img.src = "https://mdn.mozillademos.org/files/5395/backdrop.png";
 }
+
 // image()
 
 function tube() {
