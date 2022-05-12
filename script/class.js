@@ -1,11 +1,10 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 
 class UI {
-    // экземпляр класса сет фетч в конструктор
-    // система классов
-    // глобальная функция и в ней вызвать класс уи
-
-    setRectangle() {
+    setRectangle(data) {
+        Object.entries(data).forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
         const rectangle = new Path2D();
         ctx.beginPath();
         rectangle.rect();
@@ -33,7 +32,6 @@ class UI {
         };
         img.src = "../im-upload-image-1539177877702.jpg";
     }
-    //не ручками параметры вводить
 
     setTube() {
         ctx.beginPath();
@@ -95,8 +93,7 @@ class Data {
                 .json()
                 .then((data) => {
                     console.log(data);
-                    this.ui.setRectangle();
-                    return data;
+                    this.ui.setRectangle(data);
                 })
                 .catch((err) => {
                     console.log(err);
