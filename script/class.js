@@ -33,23 +33,24 @@ class UI {
         img.src = image;
     }
 
-    setTube(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
+    setTube(arr) {
+        
         ctx.beginPath();
-        ctx.arc(a, b, c, 0, Math.PI); //100, 100, 30
+        ctx.arc(arr[0], arr[1], arr[2], 0, Math.PI); //100, 100, 30
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(d, e, f, Math.PI * 2, 0); //100, 60, 25
+        ctx.arc(arr[3], arr[4], arr[5], Math.PI * 2, 0); //100, 60, 25
         ctx.stroke();
 
         ctx.beginPath(); //100, 100, 30, 100, 60, 25, 76, 56, 70, 100, 124, 55,130, 100
-        ctx.moveTo(g, h); //76, 56
-        ctx.lineTo(i, j); //70, 100
+        ctx.moveTo(arr[6], arr[7]); //76, 56
+        ctx.lineTo(arr[8], arr[9]); //70, 100
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(k, l); //124, 55
-        ctx.lineTo(m, n); //130, 100
+        ctx.moveTo(arr[10], arr[11]); //124, 55
+        ctx.lineTo(arr[12], arr[13]); //130, 100
         ctx.stroke();
     } //подумать как пересовать тюбу
 
@@ -60,29 +61,29 @@ class UI {
         ctx.stroke();
     }
 
-    setPolyline(a, b, c, d, e, f, g, h) {
+    setPolyline(arr) {
         ctx.beginPath();
-        ctx.moveTo(a, b);
-        ctx.lineTo(c, d); //40, 55,40, 150,120, 150,100, 90
-        ctx.lineTo(e, f);
-        ctx.lineTo(g, h);
+        ctx.moveTo(arr[0], arr[1]);
+        ctx.lineTo(arr[2], arr[3]); //40, 55,40, 150,120, 150,100, 90
+        ctx.lineTo(arr[4], arr[5]);
+        ctx.lineTo(arr[6], arr[7]);
         ctx.stroke();
     }
 
-    setSymbol(a, b, c, d, e, f, g, h, i, j, k, l, m, n,o,p,q,r,s,t,u,v,w,x,y,z) {
+    setSymbol(arr) {
         ctx.beginPath();
-        ctx.moveTo(a, b);
-        ctx.quadraticCurveTo(c, d, e, f);
-        ctx.quadraticCurveTo(g,h, i, j);
-        ctx.quadraticCurveTo(k, l, m, n); //75, 25, 25, 25, 25, 62.5, 25, 100, 50, 100, 50, 120, 30, 125, 60, 120, 65, 100, 125, 100, 125, 62.5, 125, 25, 75, 25
-        ctx.quadraticCurveTo(o, p, q, r);
-        ctx.quadraticCurveTo(s, t, u, v);
-        ctx.quadraticCurveTo(w, x, y, z);
+        ctx.moveTo(arr[0], arr[1]);
+        ctx.quadraticCurveTo(arr[2], arr[3], arr[4], arr[5]);
+        ctx.quadraticCurveTo(arr[6], arr[7], arr[8], arr[9]);
+        ctx.quadraticCurveTo(arr[10], arr[11], arr[12], arr[13]); //75, 25, 25, 25, 25, 62.5, 25, 100, 50, 100, 50, 120, 30, 125, 60, 120, 65, 100, 125, 100, 125, 62.5, 125, 25, 75, 25
+        ctx.quadraticCurveTo(arr[14], arr[15], arr[16], arr[17]);
+        ctx.quadraticCurveTo(arr[18], arr[19], arr[20], arr[21]);
+        ctx.quadraticCurveTo(arr[22], arr[23], arr[24], arr[25]);
         ctx.stroke();
     }
 }
 
-const t = new UI().setEllipse(260, 25, 20);
+const t = new UI().setTube([100, 100, 30, 100, 60, 25, 76, 56, 70, 100, 124, 55,130, 100]);
 
 class Data {
     constructor() {
